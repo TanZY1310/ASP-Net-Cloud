@@ -1,0 +1,72 @@
+﻿@model DDACAssignment.Models.Songs
+
+@{
+    ViewData["Title"] = "New";
+}
+
+<h1>Create</h1>
+
+<h4>Songs</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form enctype="multipart/form-data"  asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="SongName" class="control-label"></label>
+                <input asp-for="SongName" class="form-control" />
+                <span asp-validation-for="SongName" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                <label asp-for="SongUploadDate" class="control-label"></label>
+                <input asp-for="SongUploadDate" class="form-control" />
+                <span asp-validation-for="SongUploadDate" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="SongGenre" class="control-label"></label>
+                <br />
+                <select name="SongGenre">
+                    <option value="Jazz" selected>Jazz</option>
+                    <option value="Pop">Pop</option>
+                    <option value="Rock">Rock</option>
+                    <option value="Hip Hop">Hip Hop</option>
+                    <option value="Country">Country</option>
+                    <option value="Classical">Classical</option>
+                    <option value="Electronic">Electronic</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProducerName" class="control-label"></label>
+                <input asp-for="ProducerName" class="form-control" />
+                <span asp-validation-for="ProducerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span asp-controller="songFiles" asp-action="Create"></span>
+                <p>Add Song Files:</p>
+                <input type="file" name="songFiles" accept="audio/*" multiple required />
+                <br />
+            @*<input type="submit" value="Upload to S3" />*@
+            </div>
+            @*@using (Html.BeginForm("Index", "Home", FormMethod.Post,
+                              new { enctype = "multipart/form-data" }))
+        {
+            <input type="file" name="file1" />
+            <input type="submit" value="Upload file" />
+        }*@
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

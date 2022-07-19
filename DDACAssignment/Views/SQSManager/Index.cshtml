@@ -1,0 +1,58 @@
+﻿@model List<KeyValuePair<RecordingSession, string>>
+@{
+    ViewData["Title"] = "View Recording Session";
+}
+
+<style>
+    {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    table, th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #958eb6;
+        color: white;
+    }
+</style>
+
+<center>
+    <h1>View Current Scheduled Recording Sessions:</h1>
+    <br />
+    <table border="1" style="width:100%">
+        <tr>
+            <th>Session ID</th>
+            <th>Song Name</th>
+            <th>Start Date and Time</th>
+            <th>End Date and Time</th>
+            <th>Producer Name</th>
+            <th>Composer Name</th>
+            <th>Approve?</th>
+        </tr>
+        @foreach (var session in Model)
+        {
+            <tr>
+                <td>@session.Key.SessionID</td>
+                <td>@session.Key.SongName</td>
+                <td>@session.Key.StartDateTime</td>
+                <td>@session.Key.EndDateTime</td>
+                <td>@session.Key.ProducerName</td>
+                <td>@session.Key.ComposerName</td>
+                <td><a asp-action="deleteMessage" asp-route-deleteToken="@session.Value">Confirm Recording Session</a></td>
+            </tr>
+        }
+    </table>
+</center>
+

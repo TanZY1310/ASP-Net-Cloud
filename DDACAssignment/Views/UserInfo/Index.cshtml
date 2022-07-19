@@ -1,0 +1,33 @@
+﻿@model IEnumerable<DDACAssignment.Areas.Identity.Data.DDACAssignmentUser>
+
+<h1 class="bg-info text-white">All Users</h1>
+<a asp-action="registerUser" class="btn btn-secondary">Create User</a>
+
+@if (ViewBag.msg != "")
+{
+    <script>alert("@ViewBag.msg");</script>
+}
+
+<table class="table table-sn table-bordered">
+    <tr><th>ID</th><th>Name</th><th>Email</th><th>Address</th><th>Role</th></tr>
+    @foreach (DDACAssignment.Areas.Identity.Data.DDACAssignmentUser user in Model)
+    {
+        <tr>
+            <td>@user.Id</td>
+            <td>@user.Name</td>
+            <td>@user.Email</td>
+            <td>@user.Address</td>
+            <td>@user.Role</td>
+            <td>
+                <a class="btn btn-sm btn-primary" asp-action="updateUser" asp-route-id="@user.Id">
+                    Update
+                </a>
+            </td>
+            <td>
+                <a class="btn btn-sm btn-primary" asp-action="deleteUser" asp-route-id="@user.Id">
+                    Delete
+                </a>
+            </td>
+        </tr>
+    }
+</table>

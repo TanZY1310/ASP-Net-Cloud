@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewData["Title"] = "Search";
+}
+
+@if (ViewBag.msg != "")
+{
+    <script>alert("@ViewBag.msg");</script>
+}
+
+<center>
+    <h1>Search Recording Session Based on the Song Name</h1>
+    <br />
+    <hr />
+    <br />
+    <form method="post" asp-action="displayFlowerResult">
+        Enter the Song Name that you want to search = <input type="text" name="searchString" id="searchString" />
+        <br />
+        <br />
+        Composer name = @Html.DropDownList("ComposerName", "All Composer")
+        <br />
+        <br />
+        Producer name = @Html.DropDownList("ProducerName", "All Producer")
+        <input type="submit" name="submit" value="Search Song" />
+        <br /><br /> <br />
+    </form>
+</center>
+
+

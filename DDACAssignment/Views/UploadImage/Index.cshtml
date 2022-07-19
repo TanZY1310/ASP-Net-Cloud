@@ -1,0 +1,23 @@
+﻿@if (ViewBag.msg != "")
+{
+    <script>alert("@ViewBag.msg");</script>
+}
+
+@{
+    ViewData["Title"] = "Upload Artist Image";
+}
+
+<center>
+    <h1>Upload Artist Image to S3 Bucket</h1>
+    <hr />
+    <form method="post" enctype="multipart/form-data" asp-controller="UploadToS3" asp-action="Index">
+        <p>Upload one or more images to S3 Bucket</p>
+        <input type="file" name="images" accept="image/*" multiple />
+        <br />
+        <br />
+        <br />
+        <input type="submit" value="Upload to S3" class="btn btn-primary" />
+    </form>
+    <br />
+</center>
+

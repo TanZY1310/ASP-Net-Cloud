@@ -1,0 +1,52 @@
+﻿@model IEnumerable<DDACAssignment.Models.RecordingSession>
+@{
+    ViewData["Title"] = "DisplayRecordingSessionResult";
+}
+
+@if (ViewBag.msg != "")
+{
+    <script>alert("@ViewBag.msg")</script>
+}
+<center>
+    <h1>Display Flower Result</h1>
+    <br />
+    <hr />
+    <br />
+    <table border="1" style="text-align:center">
+        <tr bgcolor="yellow">
+            <th width="150px">Recording Session ID</th>
+            <th width="250px">Song Name</th>
+            <th width="250px">Start Date Time</th>
+            <th width="250px">End Date Time</th>
+            <th width="250px">Producer Name</th>
+            <th width="250px">Composer Name</th>
+        </tr>
+        @{
+            int i = 1; string color = "white";
+            foreach (var item in Model)
+            {
+                <tr bgcolor="@color">
+                    <td>@item.ID</td>
+                    <td>@item.SongName</td>
+                    <td>@item.StartDateTime</td>
+                    <td>@item.EndDateTime</td>
+                    <td>@item.ProducerName</td>
+                    <td>@item.ComposerName</td>
+                </tr>
+
+                @if (i == 1)
+                {
+                    i = 0;
+                    color = "lightblue";
+                }
+                else
+                {
+                    i = 1;
+                    color = "white";
+                }
+            }
+        };
+    </table>
+</center>
+
+

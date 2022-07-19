@@ -1,0 +1,59 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+    div.gallery {
+        border: 1px solid #ccc;
+    }
+
+        div.gallery img {
+            width: 100%;
+            height: auto;
+        }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    .responsive {
+        padding: 0 6px;
+        float: left;
+        width: 50%;
+    }
+
+    .clearfix:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+</style>
+
+<div class="text-center">
+    <div class="responsive">
+        <div class="gallery">
+            <img src="https://i.imgur.com/IIBv6fH.jpg" width="600" height="400">
+        </div>
+    </div>
+    <br />
+    <div class="responsive">
+        <div class="gallery">
+            <img src="https://i.imgur.com/AhGcOCs.jpg" width="600" height="400">
+        </div>
+    </div>
+    <h1 class="display-4">Welcome to MusicPort</h1>
+    <p>The best portal for managing in-house artists, composers and producers.</p>
+    <div class="responsive">
+        <div class="gallery">
+            <img src="https://i.imgur.com/ZvCZwvn.jpg" width="600" height="400">
+        </div>
+    </div>
+    <br />
+    <div class="responsive">
+        <div class="gallery">
+            <img src="https://i.imgur.com/OvrXyfl.jpeg" width="600" height="400">
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+

@@ -1,0 +1,16 @@
+﻿@if (ViewBag.msg != "")
+{
+    <script>alert("@ViewBag.msg");</script>
+}
+
+<center>
+
+    <form method="post" enctype="multipart/form-data" asp-controller="UploadToS3Song" asp-action="Index">
+        <p>Upload Songs to S3 Bucket:</p>
+        <input type="file" name="songs" accept="audio/*" />
+        <br />
+        <input type="submit" value="Upload to S3" />
+    </form>
+    <br />
+</center>
+

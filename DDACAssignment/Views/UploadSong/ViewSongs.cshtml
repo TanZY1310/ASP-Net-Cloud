@@ -1,0 +1,45 @@
+﻿@model List<Amazon.S3.Model.S3Object>
+    <!--To bring the result into the website since they are stored in S3 Object type-->
+
+@{
+    ViewData["Title"] = "ViewImages";
+}
+
+<h1>View Images</h1>
+
+@if (ViewBag.msg != "")
+{
+    <script>alert("@ViewBag.msg");</script>
+}
+<center>
+    <h1>View Uploaded Images</h1>
+    <br />
+    <hr />
+    <br />
+    <table border="1">
+        <tr bgcolor="Yellow">
+            <th>Product Image</th>
+            <th>Product Name</th>
+            <th>Product Image Size</th>
+            <th>Action</th>
+        </tr>
+        @{ int i = 0;}
+        @foreach (var image in Model)
+        {
+            string link = "https://" + image.BucketName + ".s3.amazonaws.com/" + image.Key;
+            <tr>
+                <td><img src="@ViewBag.URLs[i]" width="300px" height="300px" /></td>
+                <td><img src="@link" width="300px" height="300px" /></td>
+                <td>@image.Key</td>
+                <td>@image.Size</td>
+                <td>
+                    <a asp-action="DownloadImage" asp-route-FileName="@image.Key"><button>Download</button></a>
+                    <br />
+                    <a asp-action="DeleteImage" asp-route-FileName="@image.Key"><button>Delete</button></a>
+                </td>
+            </tr>
+            i++;
+        }
+    </table>
+</center>
+
